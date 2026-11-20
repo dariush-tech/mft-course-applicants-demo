@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="دموی پیشنهادی DARIUSH Digital Studio: درخواست مشاورهٔ دوره و پیگیری متقاضیان در پنل ثبت‌نام. دوره‌ها و زمان‌بندی‌ها نمونه است.">
+<meta name="theme-color" content="#a3264b">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="پیگیری متقاضیان دوره">
+<meta property="og:description" content="دموی پیشنهادی DARIUSH Digital Studio: درخواست مشاورهٔ دوره و پیگیری متقاضیان در پنل ثبت‌نام. دوره‌ها و زمان‌بندی‌ها نمونه است.">
+<meta property="og:url" content="https://dariush-tech.github.io/mft-course-applicants-demo/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23a3264b'/%3E%3Crect x='7' y='13' width='18' height='12' rx='2' fill='none' stroke='white' stroke-width='2'/%3E%3Cpath d='M7 13l16-5M11 12l2-4M17 10l2-4' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>پیگیری متقاضیان دوره</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the applicant's consultation form opens the page, with the two sample courses beside it; the enrollment
+   panel puts per-course stage counts on top, then filters, then a list beside one request's detail sheet. */
+:root {
+  --bg: #f6f4f5;
+  --surface: #ffffff;
+  --surface-2: #f0ebee;
+  --field: #fcfbfb;
+  --ink: #1f1a1d;
+  --muted: #665d62;
+  --line: #e6dfe3;
+  --line-strong: #cfc5ca;
+  --accent: #a3264b;
+  --accent-ink: #ffffff;
+  --accent-soft: #f8e4ea;
+  --accent-strong: #6e1631;
+  --s-new: #1d57b8;      --s-new-soft: #e3ecfb;
+  --s-called: #0f6f68;   --s-called-soft: #daf1ee;
+  --s-waiting: #9a5b00;  --s-waiting-soft: #fbefd9;
+  --s-enrolled: #1b7243; --s-enrolled-soft: #def2e6;
+  --c-capcut: #5b3fc4;   --c-capcut-soft: #ece6fb;
+  --c-photoshop: #1d6fa8; --c-photoshop-soft: #e1eef8;
+  --strip-bg: #6e1631; --strip-fg: #ffffff;
+  --shadow: 0 1px 2px rgba(31, 26, 29, 0.06), 0 6px 18px rgba(31, 26, 29, 0.05);
+  --scrim: rgba(20, 14, 18, 0.45);
+  --danger: #b4232a;
+  --font: "Vazirmatn", "Tahoma", "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141113; --surface: #1c181b; --surface-2: #251f23; --field: #181518; --ink: #efe8ec; --muted: #a99ca3;
+    --line: #2e272b; --line-strong: #40363c; --accent: #f07a9b; --accent-ink: #2a0712; --accent-soft: #3a1823; --accent-strong: #f9b8ca;
+    --s-new: #8db4ff; --s-new-soft: #17284a; --s-called: #6fd6cb; --s-called-soft: #0f2f2c; --s-waiting: #f2b85a; --s-waiting-soft: #3a2a10;
+    --s-enrolled: #6fd39b; --s-enrolled-soft: #12321f; --c-capcut: #b6a2ff; --c-capcut-soft: #2a2148; --c-photoshop: #86c3f0; --c-photoshop-soft: #142c40;
+    --strip-bg: #3a1823; --strip-fg: #f9c9d6; --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25); --scrim: rgba(0, 0, 0, 0.6); --danger: #f08080;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141113; --surface: #1c181b; --surface-2: #251f23; --field: #181518; --ink: #efe8ec; --muted: #a99ca3;
+  --line: #2e272b; --line-strong: #40363c; --accent: #f07a9b; --accent-ink: #2a0712; --accent-soft: #3a1823; --accent-strong: #f9b8ca;
+  --s-new: #8db4ff; --s-new-soft: #17284a; --s-called: #6fd6cb; --s-called-soft: #0f2f2c; --s-waiting: #f2b85a; --s-waiting-soft: #3a2a10;
+  --s-enrolled: #6fd39b; --s-enrolled-soft: #12321f; --c-capcut: #b6a2ff; --c-capcut-soft: #2a2148; --c-photoshop: #86c3f0; --c-photoshop-soft: #142c40;
+  --strip-bg: #3a1823; --strip-fg: #f9c9d6; --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25); --scrim: rgba(0, 0, 0, 0.6); --danger: #f08080;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.75; direction: rtl; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { margin: 0; line-height: 1.4; text-wrap: balance; }
+p { margin: 0; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.muted { color: var(--muted); }
+.mono { font-family: var(--mono); direction: ltr; unicode-bidi: isolate; font-size: 0.92em; }
+
+.strip { background: var(--strip-bg); color: var(--strip-fg); }
+.strip .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 16px; padding-block: 7px; font-size: 13px; }
+.strip span { opacity: 0.85; }
+.head .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding-block: 16px 10px; }
+.title h1 { font-size: 1.28rem; }
+.title p { font-size: 13.5px; color: var(--muted); }
+.head-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tabs { display: inline-flex; background: var(--surface-2); border-radius: 12px; padding: 4px; gap: 2px; }
+.tab { border: 0; background: none; padding: 8px 16px; border-radius: 9px; font-weight: 500; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+.tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+.badge { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--s-new-soft); color: var(--s-new); font-size: 12px; font-weight: 700; display: inline-grid; place-items: center; }
+
+.btn { border: 1px solid transparent; border-radius: 10px; padding: 10px 16px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 8px; line-height: 1.3; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { filter: brightness(1.07); }
+.btn-ghost { background: var(--surface); border-color: var(--line-strong); }
+.btn-ghost:hover { background: var(--surface-2); }
+.btn-danger { background: var(--danger); color: var(--surface); }
+.btn-sm { padding: 6px 12px; font-size: 13.5px; border-radius: 9px; }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.path { padding-block: 4px 14px; }
+.path ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.step { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); padding: 5px 12px 5px 10px; border: 1px dashed var(--line-strong); border-radius: 999px; background: var(--surface); }
+.step i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-2); font-size: 12px; font-weight: 700; }
+.step.done { color: var(--accent-strong); border-style: solid; border-color: var(--accent); background: var(--accent-soft); }
+.step.done i { background: var(--accent); color: var(--accent-ink); }
+.step .sh { display: none; }
+
+main { padding-bottom: 40px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); min-width: 0; }
+.card h2 { font-size: 1.04rem; }
+.sec { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+.sample { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--s-waiting); background: var(--s-waiting-soft); padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+
+/* applicant view */
+.apply { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.fields { display: grid; gap: 16px; }
+.field { display: grid; gap: 6px; min-width: 0; border: 0; padding: 0; margin: 0; }
+.field > span, .field legend { font-size: 13px; font-weight: 500; color: var(--muted); padding: 0; }
+.req::after { content: " *"; color: var(--danger); }
+input[type="text"], select, textarea { width: 100%; font-size: 16px; padding: 10px 12px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--field); line-height: 1.5; }
+textarea { min-height: 72px; resize: vertical; }
+.hint { font-size: 12.5px; color: var(--muted); }
+.err { color: var(--danger); font-size: 12.5px; }
+[aria-invalid="true"] { border-color: var(--danger) !important; }
+.course-opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.copt { display: grid; gap: 4px; text-align: start; padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--field); }
+.copt[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 1px var(--accent); }
+.copt b { font-weight: 700; font-size: 14.5px; }
+.copt small { font-size: 12.5px; color: var(--muted); }
+.ctimes { display: flex; flex-wrap: wrap; gap: 6px; }
+.ct { border: 1px solid var(--line-strong); background: var(--field); border-radius: 999px; padding: 7px 14px; font-size: 14px; }
+.ct[aria-checked="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.form-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; margin-top: 4px; border-top: 1px solid var(--line); }
+.success { display: grid; justify-items: center; gap: 10px; text-align: center; padding: 16px 4px 4px; }
+.ok { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--s-enrolled-soft); color: var(--s-enrolled); }
+.code-big { font-family: var(--mono); font-size: 1.7rem; font-weight: 500; letter-spacing: 0.04em; direction: ltr; padding: 6px 16px; border-radius: 10px; background: var(--surface-2); user-select: all; }
+.row-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.courses { display: grid; gap: 16px; }
+.course { display: grid; gap: 12px; border-top: 4px solid var(--cc); }
+.course[data-c="capcut"] { --cc: var(--c-capcut); --cs: var(--c-capcut-soft); }
+.course[data-c="photoshop"] { --cc: var(--c-photoshop); --cs: var(--c-photoshop-soft); }
+.course h3 { font-size: 1rem; }
+.course p { font-size: 13.5px; color: var(--muted); }
+.sched { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; font-size: 13.5px; }
+.sched dt { font-size: 12px; color: var(--muted); }
+.sched dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ctag { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500; padding: 2px 10px; border-radius: 999px; background: var(--cs); color: var(--cc); white-space: nowrap; }
+.ctag[data-c="capcut"] { --cc: var(--c-capcut); --cs: var(--c-capcut-soft); }
+.ctag[data-c="photoshop"] { --cc: var(--c-photoshop); --cs: var(--c-photoshop-soft); }
+
+/* panel */
+.panel { display: grid; gap: 20px; }
+.overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.ov { display: grid; gap: 12px; border-top: 4px solid var(--cc); }
+.ov[data-c="capcut"] { --cc: var(--c-capcut); }
+.ov[data-c="photoshop"] { --cc: var(--c-photoshop); }
+.ov-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.ov-top h3 { font-size: 1rem; }
+.ov-top p { font-size: 12.5px; color: var(--muted); }
+.funnel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.fstage { display: grid; gap: 6px; padding: 8px 10px; border-radius: 10px; background: var(--surface-2); text-align: start; border: 1px solid transparent; }
+.fstage:hover { border-color: var(--line-strong); }
+.fstage b { font-size: 1.35rem; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--sc); }
+.fstage span { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.fstage i { display: block; height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.fstage i::after { content: ""; display: block; height: 100%; width: var(--w); background: var(--sc); border-radius: 4px; }
+.st-new { --sc: var(--s-new); --ss: var(--s-new-soft); }
+.st-called { --sc: var(--s-called); --ss: var(--s-called-soft); }
+.st-waiting { --sc: var(--s-waiting); --ss: var(--s-waiting-soft); }
+.st-enrolled { --sc: var(--s-enrolled); --ss: var(--s-enrolled-soft); }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500; padding: 2px 10px; border-radius: 999px; white-space: nowrap; background: var(--ss); color: var(--sc); }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.filters { display: grid; gap: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chips .lbl { font-size: 12.5px; color: var(--muted); margin-inline-end: 4px; min-width: 44px; }
+.chip { border: 1px solid var(--line-strong); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 13px; display: inline-flex; gap: 6px; align-items: center; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip em { font-style: normal; opacity: 0.7; font-variant-numeric: tabular-nums; }
+.board { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 16px; align-items: start; }
+.list { display: grid; gap: 8px; }
+.item { width: 100%; text-align: start; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.item:hover { border-color: var(--line-strong); }
+.item[aria-current="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.item.fresh { animation: flash 1.8s ease-out; }
+@keyframes flash { from { background: var(--accent-soft); } to { background: var(--surface); } }
+.item strong { font-weight: 500; }
+.item .meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--muted); align-items: center; }
+.empty { padding: 24px 16px; text-align: center; color: var(--muted); border: 1px dashed var(--line-strong); border-radius: 12px; font-size: 14px; }
+.detail { position: sticky; top: 12px; display: grid; gap: 18px; }
+.d-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.d-top h2 { font-size: 1.12rem; }
+.d-top p { font-size: 13px; color: var(--muted); }
+.back { display: none; }
+.facts { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.facts div { background: var(--surface); padding: 10px 12px; min-width: 0; }
+.facts dt { font-size: 12px; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; }
+.block h3 { font-size: 13px; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.st-switch { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.st-btn { border: 1px solid var(--line-strong); background: var(--surface); border-radius: 10px; padding: 9px 4px; font-size: 13px; font-weight: 500; line-height: 1.4; }
+.st-btn[aria-pressed="true"] { background: var(--ss); color: var(--sc); border-color: var(--sc); }
+.notes { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 8px; }
+.notes li { background: var(--surface-2); border-radius: 10px; padding: 9px 12px; font-size: 14px; }
+.notes small { display: block; color: var(--muted); font-size: 12px; }
+.note-form { display: grid; gap: 8px; }
+.note-form .actions { display: flex; gap: 8px; justify-content: flex-end; }
+.timeline { list-style: none; margin: 0; padding: 0 14px 0 0; border-inline-start: 2px solid var(--line); display: grid; gap: 10px; }
+.timeline li { position: relative; font-size: 13.5px; }
+.timeline li::before { content: ""; position: absolute; inset-inline-start: -21px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+.timeline small { display: block; color: var(--muted); font-size: 12px; }
+.placeholder { display: grid; place-items: center; text-align: center; min-height: 220px; color: var(--muted); }
+
+.overlay { position: fixed; inset: 0; z-index: 30; background: var(--scrim); display: grid; place-items: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.modal { width: min(480px, 100%); max-height: 100%; overflow: auto; background: var(--surface); border-radius: 16px; padding: 20px; display: grid; gap: 14px; box-shadow: var(--shadow); }
+.modal-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.x { border: 0; background: var(--surface-2); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; }
+.phone { background: var(--surface-2); border-radius: 14px; padding: 14px; display: grid; gap: 8px; }
+.phone .from { font-size: 12px; color: var(--muted); text-align: center; }
+.bubble { background: var(--surface); border: 1px solid var(--line); border-radius: 16px 16px 16px 4px; padding: 12px 14px; font-size: 14px; line-height: 1.9; }
+.recips { display: flex; flex-wrap: wrap; gap: 6px; }
+.recips span { font-size: 12.5px; padding: 2px 10px; border-radius: 999px; background: var(--surface-2); }
+.toast { position: fixed; z-index: 40; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 9px 14px; border-radius: 10px; font-size: 14px; box-shadow: var(--shadow); width: max-content; max-width: calc(100% - 32px); display: flex; align-items: center; gap: 12px; }
+.toast button { background: none; border: 0; color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; padding: 0; white-space: nowrap; }
+.foot { font-size: 12.5px; color: var(--muted); padding-block: 0 24px; }
+
+@media (max-width: 900px) {
+  .apply, .board, .overview { grid-template-columns: minmax(0, 1fr); }
+  .board.has-sel .list-col { display: none; }
+  .board:not(.has-sel) .detail-col { display: none; }
+  .detail { position: static; }
+  .back { display: inline-flex; }
+}
+@media (max-width: 560px) {
+  .title h1 { font-size: 1.12rem; }
+  .head .wrap { padding-block: 12px 8px; }
+  .head-actions { width: 100%; justify-content: space-between; }
+  .card { padding: 16px; }
+  .step .lg { display: none; } .step .sh { display: inline; }
+  .step { font-size: 12.5px; padding: 4px 10px 4px 8px; }
+  .course-opts { grid-template-columns: minmax(0, 1fr); }
+  .funnel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .st-switch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .item.fresh { animation: none; } }
+</style>
+</head>
+<body>
+<div class="strip">
+  <div class="wrap">
+    <b>دموی پیشنهادی DARIUSH Digital Studio</b>
+    <span>نسخهٔ نمایشی · دوره‌ها، زمان‌بندی‌ها و متقاضیان همه نمونه و ساختگی است و فقط در همین مرورگر ذخیره می‌شود</span>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <div class="title">
+      <h1>پیگیری متقاضیان دوره</h1>
+      <p>طرح پیشنهادی برای دپارتمان هنر و سینمای مجتمع فنی تهران</p>
+    </div>
+    <div class="head-actions">
+      <div class="tabs" role="tablist" aria-label="نماهای دمو">
+        <button class="tab" role="tab" id="tab-apply" aria-controls="view-apply" aria-selected="true" type="button">درخواست مشاوره</button>
+        <button class="tab" role="tab" id="tab-panel" aria-controls="view-panel" aria-selected="false" type="button">پنل ثبت‌نام <span class="badge" id="new-count">۰</span></button>
+      </div>
+      <div id="reset-area"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="path" aria-label="مسیر دمو">
+  <div class="wrap">
+    <ol id="steps">
+      <li class="step" data-step="submit"><i>۱</i><span class="lg">یک درخواست مشاورهٔ تازه ثبت کنید</span><span class="sh">ثبت درخواست</span></li>
+      <li class="step" data-step="open"><i>۲</i><span class="lg">در پنل ثبت‌نام آن را باز کنید و یادداشت بگذارید</span><span class="sh">یادداشت در پنل</span></li>
+      <li class="step" data-step="status"><i>۳</i><span class="lg">وضعیت را جلو ببرید و شمار مراحل را ببینید</span><span class="sh">تغییر وضعیت</span></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <section id="view-apply" role="tabpanel" aria-labelledby="tab-apply">
+      <div class="apply">
+        <div class="card" id="form-card">
+          <form id="consult" novalidate>
+            <div class="sec">
+              <h2>درخواست مشاورهٔ دوره</h2>
+              <button class="btn btn-ghost btn-sm" type="button" id="fill">پر کردن با دادهٔ نمونه</button>
+            </div>
+            <div class="fields">
+              <fieldset class="field">
+                <legend class="req" id="course-label">کدام دوره؟</legend>
+                <div class="course-opts" role="radiogroup" aria-labelledby="course-label" id="course-opts"></div>
+                <small class="err" id="e-course"></small>
+              </fieldset>
+              <label class="field" for="f-name"><span class="req">نام نمایشی</span>
+                <input type="text" id="f-name" autocomplete="off" placeholder="مثلاً: سارا ب.">
+                <small class="hint">نام کوچک یا هر نامی که دوست دارید با آن صدایتان کنیم. نام کامل لازم نیست.</small>
+                <small class="err" id="e-name"></small>
+              </label>
+              <fieldset class="field">
+                <legend class="req" id="ct-label">زمان مناسب برای تماس مشاور</legend>
+                <div class="ctimes" role="radiogroup" aria-labelledby="ct-label" id="ctimes"></div>
+                <small class="err" id="e-contact"></small>
+              </fieldset>
+            </div>
+            <div class="form-foot">
+              <span class="hint">این درخواست فقط برای مشاوره است و ثبت‌نام یا پرداختی انجام نمی‌دهد.</span>
+              <button class="btn btn-primary" type="submit" id="submit">ثبت درخواست مشاوره</button>
+            </div>
+          </form>
+          <div class="success" id="success" hidden>
+            <span class="ok"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+            <h2>درخواست مشاوره ثبت شد</h2>
+            <p class="muted" id="success-text"></p>
+            <span class="code-big" id="new-code"></span>
+            <p class="hint">این درخواست همین حالا با وضعیت «جدید» در پنل ثبت‌نام دیده می‌شود.</p>
+            <div class="row-btns">
+              <button class="btn btn-primary" type="button" id="go-panel">پیگیری در پنل ثبت‌نام</button>
+              <button class="btn btn-ghost" type="button" id="again">ثبت درخواست دیگر</button>
+            </div>
+          </div>
+        </div>
+        <div class="courses" id="courses"></div>
+      </div>
+    </section>
+
+    <section id="view-panel" role="tabpanel" aria-labelledby="tab-panel" hidden>
+      <div class="panel">
+        <div class="overview" id="overview"></div>
+        <div class="card">
+          <div class="filters">
+            <div class="chips" id="f-course" role="group" aria-label="فیلتر دوره"></div>
+            <div class="chips" id="f-status" role="group" aria-label="فیلتر وضعیت"></div>
+          </div>
+        </div>
+        <div class="board" id="board">
+          <div class="list-col"><div class="list" id="list"></div></div>
+          <div class="detail-col"><div class="card detail" id="detail"></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">پرداخت و ثبت‌نام رسمی بخشی از این دمو نیست. در نسخهٔ واقعی پیام‌ها از سامانهٔ پیامک مجتمع فرستاده می‌شوند؛ در این دمو هیچ پیامی ارسال نمی‌شود.</div>
+</footer>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="modal-head"><h2 id="m-title" style="font-size:1rem"></h2><button class="x" type="button" id="m-close" aria-label="بستن">×</button></div>
+    <div id="m-body" style="display:grid;gap:12px"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(() => {
+  const KEY = "mft-art-applicants-demo-v1";
+  const HOUR = 3600e3, DAY = 24 * HOUR;
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fa = (n) => Number(n).toLocaleString("fa-IR");
+  let dayF, stampF;
+  try {
+    dayF = new Intl.DateTimeFormat("fa-IR-u-ca-persian", { weekday: "long", day: "numeric", month: "long" });
+    stampF = new Intl.DateTimeFormat("fa-IR-u-ca-persian", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+  } catch (e) { dayF = stampF = new Intl.DateTimeFormat("fa-IR"); }
+  const day = (t) => dayF.format(new Date(t));
+  const stamp = (t) => stampF.format(new Date(t));
+  function nextDow(dow, minDays) { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + minDays); while (d.getDay() !== dow) d.setDate(d.getDate() + 1); return d.getTime(); }
+
+  const COURSES = {
+    capcut: { title: "تدوین ویدیو با کپ‌کات", short: "کپ‌کات", level: "مقدماتی",
+      about: "تدوین ویدیوهای کوتاه با گوشی و رایانه: برش، زیرنویس، موسیقی و خروجی برای شبکه‌های اجتماعی.",
+      start: nextDow(6, 8), days: "شنبه و دوشنبه", time: "۱۷:۰۰ تا ۱۹:۰۰", hour: "۱۷:۰۰", sessions: 8, hours: 16, place: "سایت رایانه، طبقهٔ دوم" },
+    photoshop: { title: "فتوشاپ برای پوستر و شبکه‌های اجتماعی", short: "فتوشاپ", level: "مقدماتی تا متوسط",
+      about: "لایه‌ها، ماسک، رتوش و ترکیب‌بندی برای طراحی پوستر، کاور و پست.",
+      start: nextDow(0, 12), days: "یکشنبه و سه‌شنبه", time: "۱۰:۰۰ تا ۱۳:۰۰", hour: "۱۰:۰۰", sessions: 10, hours: 30, place: "آتلیهٔ گرافیک، طبقهٔ سوم" },
+  };
+  const ST = { new: "جدید", called: "تماس گرفته شد", waiting: "در انتظار پاسخ", enrolled: "ثبت‌نام شد" };
+  const CT = { morning: "صبح، ۹ تا ۱۲", noon: "ظهر، ۱۲ تا ۱۵", afternoon: "عصر، ۱۵ تا ۱۸", evening: "شب، ۱۸ تا ۲۰" };
+  const SAMPLES = [{ name: "سارا ب.", course: "capcut", contact: "evening" }, { name: "کیوان م.", course: "photoshop", contact: "morning" }, { name: "هستی ج.", course: "capcut", contact: "afternoon" }];
+
+  function seed() {
+    const now = Date.now();
+    const mk = (n, name, course, contact, status, ago, notes, hist) => ({ id: "ART-" + String(n).padStart(4, "0"), name, course, contact, status, created: now - ago,
+      notes: notes.map(([a, x]) => ({ t: now - a, x })), history: [{ t: now - ago, x: "درخواست مشاوره ثبت شد" }, ...hist.map(([a, x]) => ({ t: now - a, x }))] });
+    return {
+      seq: 157,
+      items: [
+        mk(156, "امیر ح.", "photoshop", "noon", "called", 9 * HOUR, [[6 * HOUR, "تماس گرفته شد. پرسید آیا لپ‌تاپ شخصی لازم است؛ گفتیم سیستم‌های آتلیه آماده است."]], [[6 * HOUR, "وضعیت به «تماس گرفته شد» تغییر کرد"]]),
+        mk(155, "پارسا ت.", "photoshop", "evening", "new", 26 * HOUR, [], []),
+        mk(154, "یاسمن د.", "capcut", "afternoon", "enrolled", 3 * DAY, [[2 * DAY, "برای گروه شنبه و دوشنبه قطعی شد."]], [[2 * DAY + 4 * HOUR, "وضعیت به «تماس گرفته شد» تغییر کرد"], [2 * DAY, "وضعیت به «ثبت‌نام شد» تغییر کرد"]]),
+        mk(153, "نگار ف.", "capcut", "morning", "waiting", 4 * DAY, [[3 * DAY, "منتظر هماهنگی با محل کارش برای روزهای کلاس است. سه‌شنبه دوباره تماس بگیریم."]], [[3 * DAY + 2 * HOUR, "وضعیت به «تماس گرفته شد» تغییر کرد"], [3 * DAY, "وضعیت به «در انتظار پاسخ» تغییر کرد"]]),
+        mk(152, "علی ر.", "photoshop", "afternoon", "enrolled", 5 * DAY, [[4 * DAY, "با نسخهٔ نصب‌شده روی لپ‌تاپش آشنا است؛ سطح مقدماتی تا متوسط مناسب است."]], [[4 * DAY + 3 * HOUR, "وضعیت به «تماس گرفته شد» تغییر کرد"], [4 * DAY, "وضعیت به «ثبت‌نام شد» تغییر کرد"]]),
+        mk(151, "مهسا ک.", "capcut", "evening", "called", 6 * DAY, [[5 * DAY, "سؤال داشت گوشی خاصی لازم است یا نه. هر گوشی اندرویدی یا آیفون کافی است."]], [[5 * DAY, "وضعیت به «تماس گرفته شد» تغییر کرد"]]),
+      ],
+    };
+  }
+  let state;
+  function load() { try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && Array.isArray(s.items)) return s; } catch (e) {} return seed(); }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  state = load();
+  const ui = { view: "apply", course: null, contact: null, sample: 0, lastId: null, fc: "all", fs: "all", sel: null, fresh: null, resetAsk: false, steps: { submit: false, open: false, status: false } };
+
+  /* ---------- routing ---------- */
+  const tabs = { apply: $("#tab-apply"), panel: $("#tab-panel") };
+  const views = { apply: $("#view-apply"), panel: $("#view-panel") };
+  function show(v) {
+    ui.view = v === "panel" ? "panel" : "apply";
+    for (const k of ["apply", "panel"]) { tabs[k].setAttribute("aria-selected", String(k === ui.view)); views[k].hidden = k !== ui.view; }
+    render(); try { scrollTo({ top: 0 }); } catch (e) {}
+  }
+  const route = () => show(location.hash === "#panel" ? "panel" : "apply");
+  tabs.apply.addEventListener("click", () => { location.hash = "apply"; });
+  tabs.panel.addEventListener("click", () => { location.hash = "panel"; });
+  addEventListener("hashchange", route);
+  addEventListener("storage", (e) => { if (e.key === KEY) { state = load(); render(); } });
+
+  /* ---------- applicant ---------- */
+  function schedLine(c) { return `شروع ${day(c.start)} · ${c.days}`; }
+  function renderForm() {
+    $("#course-opts").innerHTML = Object.entries(COURSES).map(([k, c]) => `
+      <button class="copt" type="button" role="radio" data-course="${k}" aria-checked="${ui.course === k}">
+        <b>${c.title}</b><small>${schedLine(c)} · ${c.time}</small><small>زمان‌بندی نمونه</small>
+      </button>`).join("");
+    $("#ctimes").innerHTML = Object.entries(CT).map(([k, l]) => `<button class="ct" type="button" role="radio" data-ct="${k}" aria-checked="${ui.contact === k}">${l}</button>`).join("");
+  }
+  function renderCourses() {
+    $("#courses").innerHTML = Object.entries(COURSES).map(([k, c]) => `
+      <article class="card course" data-c="${k}">
+        <div class="sec" style="margin:0"><h3>${c.title}</h3><span class="sample">زمان‌بندی نمونه</span></div>
+        <p>${c.about}</p>
+        <dl class="sched">
+          <div><dt>شروع</dt><dd>${day(c.start)}</dd></div>
+          <div><dt>روزها</dt><dd>${c.days}</dd></div>
+          <div><dt>ساعت</dt><dd>${c.time}</dd></div>
+          <div><dt>طول دوره</dt><dd>${fa(c.sessions)} جلسه · ${fa(c.hours)} ساعت</dd></div>
+          <div><dt>سطح</dt><dd>${c.level}</dd></div>
+          <div><dt>محل</dt><dd>${c.place}</dd></div>
+        </dl>
+        <button class="btn btn-ghost btn-sm" type="button" data-pick="${k}" style="justify-self:start">درخواست مشاوره برای این دوره</button>
+      </article>`).join("") + `<p class="hint">تاریخ‌ها و ساعت‌ها فقط برای نمایش دمو است و برنامهٔ قطعی دپارتمان نیست.</p>`;
+  }
+  $("#course-opts").addEventListener("click", (e) => { const b = e.target.closest("[data-course]"); if (!b) return; ui.course = b.dataset.course; $("#e-course").textContent = ""; renderForm(); $(`[data-course="${ui.course}"]`).focus(); });
+  $("#ctimes").addEventListener("click", (e) => { const b = e.target.closest("[data-ct]"); if (!b) return; ui.contact = b.dataset.ct; $("#e-contact").textContent = ""; renderForm(); $(`[data-ct="${ui.contact}"]`).focus(); });
+  $("#courses").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-pick]"); if (!b) return;
+    if (!$("#success").hidden) resetForm();
+    ui.course = b.dataset.pick; renderForm(); $("#form-card").scrollIntoView({ block: "start" }); $("#f-name").focus({ preventScroll: true });
+  });
+  $("#fill").addEventListener("click", () => {
+    const s = SAMPLES[ui.sample++ % SAMPLES.length];
+    ui.course = s.course; ui.contact = s.contact; $("#f-name").value = s.name; clearErrors(); renderForm();
+    toast("فرم با دادهٔ نمونه پر شد. حالا «ثبت درخواست مشاوره» را بزنید.");
+  });
+  function clearErrors() { ["course", "name", "contact"].forEach((k) => ($("#e-" + k).textContent = "")); $("#f-name").removeAttribute("aria-invalid"); }
+  $("#consult").addEventListener("submit", (e) => {
+    e.preventDefault(); clearErrors();
+    const name = $("#f-name").value.trim();
+    let bad = null;
+    if (!ui.course) { $("#e-course").textContent = "یکی از دو دوره را انتخاب کنید."; bad = bad || $("#course-opts .copt"); }
+    if (!name) { $("#e-name").textContent = "یک نام نمایشی بنویسید."; $("#f-name").setAttribute("aria-invalid", "true"); bad = bad || $("#f-name"); }
+    else if (name.length > 40) { $("#e-name").textContent = "نام نمایشی را کوتاه‌تر بنویسید."; $("#f-name").setAttribute("aria-invalid", "true"); bad = bad || $("#f-name"); }
+    if (!ui.contact) { $("#e-contact").textContent = "زمان مناسب تماس را انتخاب کنید."; bad = bad || $("#ctimes .ct"); }
+    if (bad) { bad.focus(); return; }
+    const now = Date.now(), id = "ART-" + String(state.seq++).padStart(4, "0");
+    state.items.unshift({ id, name, course: ui.course, contact: ui.contact, status: "new", created: now, notes: [], history: [{ t: now, x: "درخواست مشاوره ثبت شد" }] });
+    save();
+    ui.lastId = id; ui.sel = id; ui.fresh = id; ui.fc = "all"; ui.fs = "all"; ui.steps.submit = true;
+    $("#success-text").textContent = `${name}، درخواست مشاورهٔ «${COURSES[ui.course].title}» ثبت شد. مشاور در بازهٔ «${CT[ui.contact]}» تماس می‌گیرد. کد پیگیری:`;
+    $("#new-code").textContent = id;
+    $("#consult").hidden = true; $("#success").hidden = false;
+    $("#form-card").scrollIntoView({ block: "start" }); $("#go-panel").focus({ preventScroll: true });
+    renderSteps(); renderBadge();
+  });
+  function resetForm() { $("#consult").reset(); ui.course = null; ui.contact = null; clearErrors(); renderForm(); $("#success").hidden = true; $("#consult").hidden = false; }
+  $("#again").addEventListener("click", () => { resetForm(); $("#f-name").focus(); });
+  $("#go-panel").addEventListener("click", () => { ui.sel = ui.lastId; location.hash = "panel"; });
+
+  /* ---------- panel ---------- */
+  const count = (c, s) => state.items.filter((i) => (c === "all" || i.course === c) && (s === "all" || i.status === s)).length;
+  function renderOverview() {
+    $("#overview").innerHTML = Object.entries(COURSES).map(([k, c]) => {
+      const total = count(k, "all") || 1;
+      return `<div class="card ov" data-c="${k}">
+        <div class="ov-top"><div><h3>${c.title}</h3><p>${schedLine(c)} · ${c.time} · <span class="sample" style="font-size:11px">نمونه</span></p></div>
+          <button class="btn btn-ghost btn-sm" type="button" data-remind="${k}">پیش‌نمایش یادآوری شروع کلاس</button></div>
+        <div class="funnel">${Object.entries(ST).map(([s, l]) => `
+          <button class="fstage st-${s}" type="button" data-fc="${k}" data-fs="${s}" title="نمایش متقاضیان «${l}» در این دوره">
+            <b>${fa(count(k, s))}</b><span>${l}</span><i style="--w:${Math.round((count(k, s) / total) * 100)}%"></i></button>`).join("")}</div>
+      </div>`;
+    }).join("");
+  }
+  $("#overview").addEventListener("click", (e) => {
+    const r = e.target.closest("[data-remind]");
+    if (r) return remind(r.dataset.remind);
+    const f = e.target.closest("[data-fc]"); if (!f) return;
+    ui.fc = f.dataset.fc; ui.fs = f.dataset.fs; renderFilters(); renderList(); $("#list").scrollIntoView({ block: "nearest" });
+  });
+  function renderFilters() {
+    $("#f-course").innerHTML = `<span class="lbl">دوره</span>` + [["all", "همهٔ دوره‌ها"], ...Object.entries(COURSES).map(([k, c]) => [k, c.short])]
+      .map(([k, l]) => `<button class="chip" type="button" data-c="${k}" aria-pressed="${ui.fc === k}">${l}<em>${fa(count(k, "all"))}</em></button>`).join("");
+    $("#f-status").innerHTML = `<span class="lbl">وضعیت</span>` + [["all", "همه"], ...Object.entries(ST)]
+      .map(([k, l]) => `<button class="chip" type="button" data-s="${k}" aria-pressed="${ui.fs === k}">${l}<em>${fa(count(ui.fc, k))}</em></button>`).join("");
+  }
+  $("#f-course").addEventListener("click", (e) => { const b = e.target.closest("[data-c]"); if (!b) return; ui.fc = b.dataset.c; renderFilters(); renderList(); });
+  $("#f-status").addEventListener("click", (e) => { const b = e.target.closest("[data-s]"); if (!b) return; ui.fs = b.dataset.s; renderFilters(); renderList(); });
+  function renderList() {
+    const items = state.items.filter((i) => (ui.fc === "all" || i.course === ui.fc) && (ui.fs === "all" || i.status === ui.fs)).sort((a, b) => b.created - a.created);
+    if (!items.length) {
+      $("#list").innerHTML = `<div class="empty">متقاضی‌ای با این فیلترها نیست.<br><button class="btn btn-ghost btn-sm" type="button" id="clear-f" style="margin-top:8px">نمایش همه</button></div>`;
+      $("#clear-f").addEventListener("click", () => { ui.fc = "all"; ui.fs = "all"; renderFilters(); renderList(); });
+      return;
+    }
+    $("#list").innerHTML = items.map((i) => `
+      <button class="item${ui.fresh === i.id ? " fresh" : ""}" type="button" data-id="${i.id}" aria-current="${i.id === ui.sel}">
+        <span><strong>${esc(i.name)}</strong></span><span class="pill st-${i.status}">${ST[i.status]}</span>
+        <span class="meta"><span class="ctag" data-c="${i.course}">${COURSES[i.course].short}</span><span>تماس: ${CT[i.contact]}</span><span>${fa(i.notes.length)} یادداشت</span><span class="mono">${i.id}</span></span>
+      </button>`).join("");
+  }
+  $("#list").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-id]"); if (!b) return;
+    ui.sel = b.dataset.id; ui.fresh = null; renderList(); renderDetail();
+    if (matchMedia("(max-width: 900px)").matches) $("#detail").scrollIntoView({ block: "start" });
+  });
+  function renderDetail() {
+    const it = state.items.find((i) => i.id === ui.sel), box = $("#detail");
+    $("#board").classList.toggle("has-sel", !!it);
+    if (!it) { box.innerHTML = `<div class="placeholder"><div><strong style="font-weight:500">یک متقاضی را از فهرست انتخاب کنید</strong><p style="font-size:13.5px">دوره، زمان تماس، یادداشت‌ها و وضعیت هر درخواست اینجا یکجا نمایش داده می‌شود.</p></div></div>`; return; }
+    const c = COURSES[it.course];
+    box.innerHTML = `
+      <div class="d-top">
+        <div><h2>${esc(it.name)}</h2><p>کد پیگیری <span class="mono">${it.id}</span> · ثبت در ${stamp(it.created)}</p></div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="pill st-${it.status}">${ST[it.status]}</span><button class="btn btn-ghost btn-sm back" type="button" id="back">بازگشت به فهرست</button></div>
+      </div>
+      <dl class="facts">
+        <div><dt>دوره</dt><dd><span class="ctag" data-c="${it.course}">${c.short}</span> ${c.title}</dd></div>
+        <div><dt>زمان مناسب تماس</dt><dd>${CT[it.contact]}</dd></div>
+        <div><dt>شروع دوره (نمونه)</dt><dd>${day(c.start)}</dd></div>
+        <div><dt>برنامه (نمونه)</dt><dd>${c.days} · ${c.time}</dd></div>
+      </dl>
+      <div class="block"><h3 id="st-label">وضعیت پیگیری</h3>
+        <div class="st-switch" role="group" aria-labelledby="st-label">${Object.entries(ST).map(([s, l]) => `<button class="st-btn st-${s}" type="button" data-st="${s}" aria-pressed="${it.status === s}">${l}</button>`).join("")}</div>
+      </div>
+      <div class="block"><h3>یادداشت‌های کارشناس</h3>
+        ${it.notes.length ? `<ul class="notes">${it.notes.slice().reverse().map((n) => `<li>${esc(n.x)}<small>${stamp(n.t)}</small></li>`).join("")}</ul>` : `<p class="hint" style="margin-bottom:10px">هنوز یادداشتی ثبت نشده است.</p>`}
+        <form class="note-form" id="note-form" novalidate>
+          <label for="note" class="hint">یادداشت تازه</label>
+          <textarea id="note" placeholder="مثلاً: تماس گرفته شد؛ گروه شنبه و دوشنبه را ترجیح می‌دهد."></textarea>
+          <div class="actions"><button class="btn btn-primary btn-sm" type="submit">افزودن یادداشت</button></div>
+        </form>
+      </div>
+      <div class="block"><h3>تاریخچه</h3><ol class="timeline">${it.history.slice().reverse().map((h) => `<li>${esc(h.x)}<small>${stamp(h.t)}</small></li>`).join("")}</ol></div>`;
+    $("#back").addEventListener("click", () => { ui.sel = null; renderList(); renderDetail(); });
+    box.querySelectorAll("[data-st]").forEach((b) => b.addEventListener("click", () => {
+      const s = b.dataset.st; if (it.status === s) return;
+      it.status = s; it.history.push({ t: Date.now(), x: `وضعیت به «${ST[s]}» تغییر کرد` });
+      ui.steps.status = true; commit(); toast(`وضعیت ${it.name} به «${ST[s]}» تغییر کرد و شمار مراحل به‌روز شد.`);
+    }));
+    $("#note-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const ta = $("#note"), x = ta.value.trim();
+      if (!x) { ta.setAttribute("aria-invalid", "true"); ta.focus(); return; }
+      it.notes.push({ t: Date.now(), x }); it.history.push({ t: Date.now(), x: "یادداشت تازه افزوده شد" });
+      ui.steps.open = true; commit(); toast("یادداشت ذخیره شد."); $("#note").focus();
+    });
+  }
+  function remind(k) {
+    const c = COURSES[k];
+    const recips = state.items.filter((i) => i.course === k && i.status === "enrolled");
+    const who = recips[0] ? esc(recips[0].name) : "متقاضی";
+    openModal("پیش‌نمایش یادآوری شروع کلاس · " + c.short, `
+      <span class="sample" style="justify-self:start">پیش‌نمایش · زمان‌بندی نمونه · ارسال نمی‌شود</span>
+      <div class="phone"><span class="from">پیامک · یک روز پیش از شروع</span>
+        <div class="bubble"><b>مجتمع فنی تهران · دپارتمان هنر و سینما</b><br>${who} عزیز، کلاس «${c.title}» ${day(c.start)} ساعت ${c.hour} شروع می‌شود.<br>برنامه: ${c.days}، ${c.time}<br>محل: ${c.place}</div></div>
+      <div><p class="hint" style="margin-bottom:6px">گیرندگان: ${fa(recips.length)} متقاضی با وضعیت «${ST.enrolled}»</p>
+        <div class="recips">${recips.length ? recips.map((r) => `<span>${esc(r.name)}</span>`).join("") : '<span class="muted">هنوز کسی در این دوره «ثبت‌نام شد» نیست.</span>'}</div></div>
+      <p class="hint">در نسخهٔ واقعی، این پیام خودکار برای همهٔ ثبت‌نام‌شده‌های دوره فرستاده می‌شود.</p>`);
+  }
+
+  /* ---------- shared ---------- */
+  function renderBadge() { $("#new-count").textContent = fa(state.items.filter((i) => i.status === "new").length); }
+  function renderSteps() { document.querySelectorAll("#steps .step").forEach((li) => li.classList.toggle("done", !!ui.steps[li.dataset.step])); }
+  function render() {
+    renderBadge(); renderSteps();
+    if (ui.view === "apply") { renderForm(); renderCourses(); }
+    else { renderOverview(); renderFilters(); renderList(); renderDetail(); }
+  }
+  function commit() { save(); render(); }
+  const overlay = $("#overlay"); let lastFocus = null;
+  function openModal(title, html) { lastFocus = document.activeElement; $("#m-title").textContent = title; $("#m-body").innerHTML = html; overlay.hidden = false; $("#m-close").focus(); }
+  function closeModal() { if (overlay.hidden) return; overlay.hidden = true; if (lastFocus && document.contains(lastFocus)) lastFocus.focus(); }
+  $("#m-close").addEventListener("click", closeModal);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+  addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+  let tt;
+  function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => (t.hidden = true), 2800); }
+  function renderReset() {
+    const area = $("#reset-area");
+    if (!ui.resetAsk) {
+      area.innerHTML = `<button class="btn btn-ghost btn-sm" id="reset" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>بازنشانی دمو</button>`;
+      $("#reset").addEventListener("click", () => { ui.resetAsk = true; renderReset(); });
+    } else {
+      area.innerHTML = `<span style="display:inline-flex;gap:6px;align-items:center;font-size:13px">همهٔ تغییرات پاک شود؟
+        <button class="btn btn-danger btn-sm" id="reset-yes" type="button">بله، بازنشانی</button><button class="btn btn-ghost btn-sm" id="reset-no" type="button">انصراف</button></span>`;
+      $("#reset-yes").addEventListener("click", () => {
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        state = seed(); save();
+        Object.assign(ui, { course: null, contact: null, sample: 0, lastId: null, fc: "all", fs: "all", sel: null, fresh: null, resetAsk: false, steps: { submit: false, open: false, status: false } });
+        $("#consult").reset(); clearErrors(); $("#success").hidden = true; $("#consult").hidden = false;
+        renderReset(); location.hash = "apply"; route(); toast("دمو به حالت اولیه برگشت.");
+      });
+      $("#reset-no").addEventListener("click", () => { ui.resetAsk = false; renderReset(); });
+      $("#reset-yes").focus();
+    }
+  }
+  renderReset(); route();
+})();
+</script>
+</body>
+</html>
